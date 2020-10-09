@@ -1,23 +1,21 @@
 Rails.application.routes.draw do
   root 'publics/homes#top'
-  devise_for :admins do{
+  devise_for :admins, controllers: {
     registrations: 'admins/registrations',
     sessions: 'admins/sessions',
     passwords: 'admins/passwords'
   }
-end
-  devise_for :end_users do{
-    registrations: 'public/end_users/registrations',
-    sessions: 'public/end_users/sessions',
-    passwords: 'public/end_users/passwords'
+  devise_for :end_users, controllers: {
+    registrations: 'publics/registrations',
+    sessions: 'publics/sessions',
+    passwords: 'publics/passwords'
   }
-end
   namespace :admins do
     resources :novels, only: [:index, :show, :edit, :destroy]
     resources :illustrations, only: [:index, :show, :edit, :destroy]
     resources :series_novels, only: [:index, :show, :edit, :destroy]
     resources :series_illusts, only: [:index, :show, :edit, :destroy]
-    resources :inquiry, only: [:index, :show]
+    resources :inquiries, only: [:index, :show]
     resources :end_users, only: [:index, :show, :edit]
     resources :favorites, only: [:show]
   end
