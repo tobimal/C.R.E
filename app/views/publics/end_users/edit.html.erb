@@ -1,0 +1,26 @@
+<h2>User info</h2>
+
+<%= form_for(@end_user, url: publics_end_user_path(current_end_user)) do |f| %>
+
+	<%= render 'layouts/error_messages', resource: @end_user %>
+
+	<div class="field">
+		<%= f.label :name %>
+		<%= f.text_field :name, class: "name" %>
+	</div>
+          <div class="field">
+          	<%= f.label :year, "生年" %><%= f.label :month , "月" %><%= f.label :day, "日" %>
+          <%= f.text_field :year, autocomplete: "year" %>年（西暦)
+          <br><%= f.text_field :month, autocomplete: "month" %>月
+          <br><%= f.text_field :day, autocomplete: "day" %>日
+
+	<div class="field">
+		<%= f.label :introduction %>
+		<%= f.text_area :introduction, class: "introduction" %>
+	</div>
+
+	<div class="actions">
+		<%= f.submit %>
+	</div>
+
+<% end %>

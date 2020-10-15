@@ -10,7 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_08_065604) do
+
+ActiveRecord::Schema.define(version: 2020_10_10_041907) do
+
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -34,6 +36,10 @@ ActiveRecord::Schema.define(version: 2020_10_08_065604) do
     t.integer "year"
     t.integer "month"
     t.integer "day"
+
+    t.text "introduction"
+    t.string "profile_image"
+
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_end_users_on_email", unique: true
@@ -41,11 +47,11 @@ ActiveRecord::Schema.define(version: 2020_10_08_065604) do
   end
 
   create_table "favorites", force: :cascade do |t|
-    t.integer "end_user_id"
-    t.integer "novel_id"
-    t.integer "illustration_id"
+    t.integer "end_user_id", null: false
+    t.integer "novel_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["end_user_id", "novel_id"], name: "index_favorites_on_end_user_id_and_novel_id", unique: true
   end
 
   create_table "histories", force: :cascade do |t|
@@ -75,6 +81,7 @@ ActiveRecord::Schema.define(version: 2020_10_08_065604) do
 
   create_table "novels", force: :cascade do |t|
     t.integer "series_novel_id"
+    t.integer "end_user_id"
     t.string "title"
     t.text "body"
     t.datetime "created_at", null: false
