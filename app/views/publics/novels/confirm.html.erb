@@ -1,0 +1,22 @@
+<section class="inner">
+	<h2 class="section-ttl">投稿小説確認</h2>
+	<%= form_for(@novel, url: publics_novels_path) do |f| %>
+		<div class="field">
+			<%= f.label :series_novel, "siri-zumei" %>
+			<p></p>
+			
+		</div>
+		<div class="field">
+			<label>taitoru</label>
+			<p><%= @novel.title %></p>
+			<%= f.hidden_field :title, value: @novel.title %>
+		</div>
+		<div class="field">
+			<label>honnbunn</label>
+			<p><%= @novel.body %></p>
+			<%= f.hidden_field :body, value: @novel.body %>
+		<div class="actions text-center">
+			<%= f.submit "投稿を確定する", class: "btn btn-primary submit_to_create_novel" %>
+		</div>
+	<% end %>
+</section>

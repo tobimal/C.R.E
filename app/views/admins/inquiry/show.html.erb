@@ -1,0 +1,12 @@
+<h2>お問い合わせ内容</h2>
+    <%= form_for @inquiry, url: admins_inquiry_path do |f| %>
+        <h3>顧客名</h3>
+        <%= @inquiry.end_user.name %>さん
+        <h3>問い合わせ日</h3>
+        <%= @inquiry.created_at.strftime("%Y年%m月%d日 ") %>
+        <h3>タイトル</h3>
+        <%= @inquiry.title %>
+        <h3>問い合わせ内容</h3>
+        <%= @inquiry.body %>
+        
+    <% end %>

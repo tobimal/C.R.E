@@ -1,2 +1,41 @@
-<h1>Publics::SeriesNovels#show</h1>
-<p>Find me in app/views/publics/series_novels/show.html.erb</p>
+
+<div class="row">
+  <div class="col-xs-1">
+</div>
+  <div class="col-xs-9">
+    <h2>小説シリーズ詳細</h2>
+    <div class="row">
+            
+          </div><br>
+          <div>タイトル <%= @series_novel.title %>
+          </div><br>
+          <div>内容<br><%= @series_novel.introduction %></div><br>
+          <% if current_end_user_signed_in? %>
+            <div><%= link_to "Edit", edit_admins_series_novel_path(@series_novel), class: "btn-sm btn-success edit_series_novel_#{@series_novel.id}" %></div>
+            <% end %>
+    
+
+          <table class="table table-hover table-inverse">
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Opinion</th>
+          <th colspan="4"></th>
+        </tr>
+      </thead>
+
+      <tbody>
+    <% @novels.each do |novel| %>
+        <tr>
+          
+          <td><%= link_to novel.title, admins_novel_path(novel), class: "novel_#{novel.id}" %></td>
+          <td><%= novel.end_user.name %></td>
+          
+        </tr>
+        <% end %>
+        </tbody>
+    </table>
+
+  </div>
+  </div>
+</div>

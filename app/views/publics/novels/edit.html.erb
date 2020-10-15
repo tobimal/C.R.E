@@ -1,2 +1,27 @@
-<h1>Publics::Novels#edit</h1>
-<p>Find me in app/views/publics/novels/edit.html.erb</p>
+<div class="row">
+	<div class="col-xs-3">
+		<h2>マイページ</h2>
+		<%= render 'publics/end_users/profile', end_user: current_end_user %>
+	</div>
+	<div class="col-xs-9">
+		<p>toukounaiyou</p>
+		<%= form_for(@novel, url: publics_novel_path) do |f| %>
+		<p>ジャンル</p>
+    <%=f.collection_select :series_novel_id, SeriesNovel.all, :id, :title, { prompt: '選択してください' } %>
+	<div class="field row">
+		<%= f.label :title %><br>
+		<%= f.text_field :title, class: "col-xs-8 novel_title" %>
+	</div>
+
+	<div class="field row">
+		<%= f.label :body %><br>
+		<%= f.text_area :body, class: "col-xs-10 novel_body" %>
+	</div>
+
+
+	<div class="actions row">
+		<%= f.submit class: "btn btn-primary col-xs-6" %>
+	</div>
+	<% end %>
+</div>
+</div>
