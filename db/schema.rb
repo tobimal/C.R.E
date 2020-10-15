@@ -10,7 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+
 ActiveRecord::Schema.define(version: 2020_10_10_041907) do
+
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -34,8 +36,10 @@ ActiveRecord::Schema.define(version: 2020_10_10_041907) do
     t.integer "year"
     t.integer "month"
     t.integer "day"
+
     t.text "introduction"
     t.string "profile_image"
+
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_end_users_on_email", unique: true

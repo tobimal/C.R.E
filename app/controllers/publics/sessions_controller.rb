@@ -21,7 +21,9 @@ class Publics::SessionsController < Devise::SessionsController
   # protected
 
   # If you have extra params to permit, append them to the sanitizer.
+
   def after_sign_in_path_for(resource)
     publics_end_user_path(current_end_user)
   end
+
 end

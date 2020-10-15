@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   root to:'publics/homes#top'
   devise_for :admins, controllers: {
     sessions: 'admins/sessions',
@@ -9,6 +10,7 @@ Rails.application.routes.draw do
   }
 
   root to:'publics/homes#top'
+
   namespace :admins do
     resources :novels, only: [:index, :show, :edit, :destroy] do
     resource :favorites, only: [:create, :destroy]
@@ -16,11 +18,12 @@ Rails.application.routes.draw do
     resources :illustrations, only: [:index, :show, :edit, :destroy]
     resources :series_novels, only: [:index, :show, :edit, :destroy]
     resources :series_illusts, only: [:index, :show, :edit, :destroy]
-    resources :inquiry, only: [:index, :show]
+    resources :inquiries, only: [:index, :show]
     resources :end_users, only: [:index, :show, :edit]
   end
 
   namespace :publics do
+
     get '/search', to: 'search#search'
     get "/top"=> "homes#top"
     resources :novels, only: [:index, :show, :edit, :new, :create, :update, :destroy] do
@@ -29,6 +32,7 @@ Rails.application.routes.draw do
     post 'novels/confirm' => 'novels#confirm'
     get 'novels/confirm' => 'novels#error'
     get 'novels/thanks' => 'novels#thanks'
+
     resources :illustrations, only: [:index, :show, :edit, :new, :create, :update, :destroy]
     resources :series_novels, only: [:new, :index, :show, :edit, :create, :update, :destroy]
     resources :series_iliusts, only: [:new, :index, :show, :edit, :create, :update, :destroy]

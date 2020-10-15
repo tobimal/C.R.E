@@ -2,6 +2,7 @@
 
 class Publics::RegistrationsController < Devise::RegistrationsController
    before_action :configure_sign_up_params, only: [:create]
+
   # before_action :configure_account_update_params, only: [:update]
 
   # GET /resource/sign_up
@@ -38,6 +39,7 @@ class Publics::RegistrationsController < Devise::RegistrationsController
   #   super
   # end
 
+
   # protected
 
   # If you have extra params to permit, append them to the sanitizer.
@@ -53,6 +55,7 @@ class Publics::RegistrationsController < Devise::RegistrationsController
   def after_sign_up_path_for(resource)
     publics_end_user_path(current_end_user)
   end
+
 
   # The path used after sign up for inactive accounts.
   # def after_inactive_sign_up_path_for(resource)

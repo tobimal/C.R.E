@@ -4,6 +4,7 @@ class EndUser < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+
          has_many :series_novels, dependent: :destroy
          has_many :novels, dependent: :destroy
          has_many :inquiry, dependent: :destroy
@@ -13,4 +14,5 @@ class EndUser < ApplicationRecord
          def own_novel?(novel)
   			self.id == novel.end_user_id
 		end
+
 end
