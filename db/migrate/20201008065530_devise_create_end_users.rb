@@ -35,6 +35,7 @@ class DeviseCreateEndUsers < ActiveRecord::Migration[5.2]
       t.integer :year
       t.integer :month
       t.integer :day
+      t.text :introduction
 
       t.timestamps null: false
     end

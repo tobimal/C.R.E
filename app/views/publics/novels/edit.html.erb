@@ -4,7 +4,7 @@
 		<%= render 'publics/end_users/profile', end_user: current_end_user %>
 	</div>
 	<div class="col-xs-9">
-		<p>toukounaiyou</p>
+		<p>投稿内容</p>
 		<%= form_for(@novel, url: publics_novel_path) do |f| %>
 		<p>ジャンル</p>
     <%=f.collection_select :series_novel_id, SeriesNovel.all, :id, :title, { prompt: '選択してください' } %>

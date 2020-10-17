@@ -14,20 +14,12 @@ class Publics::SearchController < ApplicationController
     if model == 'end_user'
       if method == 'perfect'
         EndUser.where(name: content)
-      elsif method == 'forward'
-        EndUser.where('name LIKE ?', content+'%')
-      elsif method == 'backward'
-        EndUser.where('name LIKE ?', '%'+content)
       else
         EndUser.where('name LIKE ?', '%'+content+'%')
       end
     elsif model == 'novel'
       if method == 'perfect'
         Novel.where(title: content)
-      elsif method == 'forward'
-        Novel.where('title LIKE ?', content+'%')
-      elsif method == 'backward'
-        Novel.where('title LIKE ?', '%'+content)
       else
         Novel.where('title LIKE ?', '%'+content+'%')
       end

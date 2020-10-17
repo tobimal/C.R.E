@@ -5,8 +5,22 @@ class Publics::NovelsController < ApplicationController
   end
 
   def show
+
   	@novel = Novel.find(params[:id])
+    new_history = @novel.histories.new
+    new_history.end_user_id = current_end_user.id
     
+    if current_end_user.histories.exists?(novel_id: "#{params[:id]}")
+      old_history = current_end_user.histories.find_by(novel_id: "#{params[:id]}")
+      old_history.destroy
+    end
+    new_history.save
+
+    histories_stock_limit = 10
+    histories = current_end_user.histories.all
+    if histories.count > histories_stock_limit
+      histories[0].destroy
+    end
   end
 
   def new
@@ -26,7 +40,7 @@ class Publics::NovelsController < ApplicationController
   	@novel = Novel.new(novel_params)
     @novel.end_user_id = current_end_user.id
     if @novel.save
-      redirect_to publics_novel_path(@novel), notice: "You have created novel successfully."
+      redirect_to publics_end_user_path(current_end_user), notice: "You have created novel successfully."
     else
       @novels = Novel.all
       render 'index'

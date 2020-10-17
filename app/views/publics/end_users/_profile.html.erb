@@ -1,5 +1,5 @@
 <table class="table">
-		<tr><%= attachment_image_tag(end_user, :profile_image, :fill, 100, 100, fallback: "NO_IMAGE.png") %></tr>
+		<tr><%= attachment_image_tag(end_user, :profile_image_id, :fill, 100, 100, fallback: "NO_IMAGE.png") %></tr>
 
 		<tr>
 			<th>name</th>
@@ -20,5 +20,6 @@
   <div class="row">
 		<%= link_to '小説シリーズを作成する',new_publics_series_novel_path,class: "btn btn-primary" %><br>
 		<%= link_to '小説を投稿する',new_publics_novel_path,class: "btn btn-primary" %>
+		<%= link_to '閲覧履歴',publics_histories_path,class: "btn btn-primary" %><br>
 	</div>
 <% end %>
