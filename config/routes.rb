@@ -40,7 +40,7 @@ Rails.application.routes.draw do
     post  'inquiry/confirm' => 'inquiry#confirm'   # 確認画面
     post  'inquiry/thanks'  => 'inquiry#thanks'    # 送信完了画面
     resources :end_users, only: [:show, :edit, :update]
-    resources :histories, only: [:show]
+    resources :histories, only: [:index]
     
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

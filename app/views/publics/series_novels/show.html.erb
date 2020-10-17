@@ -10,7 +10,7 @@
           <div>タイトル <%= @series_novel.title %>
           </div><br>
           <div>内容<br><%= @series_novel.introduction %></div><br>
-          <% if current_end_user_signed_in? %>
+          <% if @series_novel.end_user == current_end_user %>
             <div><%= link_to "Edit", edit_admins_series_novel_path(@series_novel), class: "btn-sm btn-success edit_series_novel_#{@series_novel.id}" %></div>
             <% end %>
     

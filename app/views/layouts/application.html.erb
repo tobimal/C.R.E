@@ -33,14 +33,13 @@
       <%= form_tag(publics_search_path, method: :get) do %>
         <%= text_field_tag 'search[content]' %>
         <%= select_tag 'search[model]', options_for_select({ "ユーザー" => "end_user", "小説" => "novel" }) %>
-        <%= select_tag 'search[method]', options_for_select({ "完全一致" => "match", "前方一致" => "forward", "後方一致" => "backward", "部分一致" => "partical"  }) %>
+        <%= select_tag 'search[method]', options_for_select({ "完全一致" => "match", "部分一致" => "partical"  }) %>
         <%= submit_tag '検索', class: "btn btn-primary" %>
       <% end %>
     </div></li>
             <li><%= link_to 'マイページ', publics_end_user_path(current_end_user), class: 'glyphicon glyphicon-home home' %></li>
             <li><%= link_to '小説一覧', publics_novels_path, class: 'glyphicon glyphiconuser users' %></li>
             <li><%= link_to '小説シリーズ一覧', publics_series_novels_path, class: 'glyphicon glyphicon-user users' %></li>
-            <li><%= link_to '検索', publics_search_path,class: 'glyphicon glyphicon-novel novels' %></li>
             <li><%= link_to 'ログアウト', destroy_end_user_session_path, method: :delete, class: 'glyphicon glyphicon-log-out logout' %></li>
             <% elsif admin_signed_in? %>
             <li><%= link_to '小説一覧', admins_novels_path, class: 'glyphicon glyphicon-home home' %></li>

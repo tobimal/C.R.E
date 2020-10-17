@@ -10,6 +10,7 @@ class EndUser < ApplicationRecord
          has_many :inquiry, dependent: :destroy
          has_many :favorites, dependent: :destroy
          has_many :favorite_novels, through: :favorites, source: :novel
+         has_many :histories, dependent: :destroy
 
          def own_novel?(novel)
   			self.id == novel.end_user_id

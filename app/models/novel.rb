@@ -3,6 +3,7 @@ class Novel < ApplicationRecord
 	has_many :favorites, dependent: :destroy
 	belongs_to :series_novel, optional: true
 	accepts_nested_attributes_for :series_novel
+	has_many :histories, dependent: :destroy
 
   validates :title, presence: true
   validates :body, presence: true
