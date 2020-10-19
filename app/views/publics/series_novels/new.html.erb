@@ -1,2 +1,19 @@
-<h1>Publics::SeriesNovels#new</h1>
-<p>Find me in app/views/publics/series_novels/new.html.erb</p>
+<h2>シリーズ追加</h2>
+
+<div class="col-xs-3 col-xs-offset-1">
+
+<%= form_for(@series_novel, url: publics_series_novels_path) do |f| %>
+	<div class="field row">
+		<%= f.label :シリーズ %><br>
+		<%= f.text_field :title %>
+	</div>
+	<div class="field row">
+		<%= f.label :紹介文 %><br>
+		<%= f.text_area :introduction %>
+	</div>
+		
+	<div class="actions">
+	<%= f.submit :登録 %>
+	</div>
+<% end %>
+</div>
