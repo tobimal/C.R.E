@@ -68,4 +68,9 @@ gem 'bootstrap-sass', '~> 3.4.1'
 gem 'pry-byebug'
 gem 'kaminari'
 gem 'kaminari-bootstrap', '~> 3.0.1'
+
 gem 'dotenv-rails'
+group :production do
+  gem 'mysql2'
+end
+
