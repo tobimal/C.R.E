@@ -12,6 +12,10 @@ class EndUser < ApplicationRecord
          has_many :favorite_novels, through: :favorites, source: :novel
          has_many :histories, dependent: :destroy
 
+         validates :name,  presence: true
+         validates :password,        presence: true
+         validates :email,           presence: true,uniqueness: true
+
          def own_novel?(novel)
   			self.id == novel.end_user_id
 		end

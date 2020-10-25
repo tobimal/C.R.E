@@ -12,13 +12,12 @@
   </head>
 
   <body>
-    <div class="container">
+
 <header class="navbar navbar-fixed-top navbar-inverse" style="background:#000080;">
-      
-        <nav class="nav navbar-nav navbar-left">
+          <nav class="nav navbar-nav navbar-left">
           <span>
             <%= link_to root_path do %>
-            C.R.E
+            <%= image_tag "C.R.E.png", :size =>"100x40" %>
               <% end %>
             </span>
         </nav>
@@ -52,23 +51,34 @@
             <% end %>
           </ul>
         </nav>
+        </div>
 
     </header>
-
-    <br>
-    <br>
-    <br>
-    <br>
+<br>
+<br>
+<br>
     <%= yield %>
-  </body>
-  <footer >
-    <nav>
-    <ul class="nav navbar-nav navbar-right" >
+  
+<footer class="footer style-2">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-3">
+            <div class="col">
+              <br>
+              <p class="no-margin" style="font-size: 15px;">
+              <br>
     <% if end_user_signed_in? %>
     <%= link_to 'お問い合わせ', publics_inquiry_path, class: 'glyphicon glyphicon-log-in sign_in' %>
        <% end %>
-     </ul>
-   </nav>
+     </p>
+
+            </div>
+          </div>
+         
+          </div>
+        </div>
+      </div>
   </footer>
-</div>
+
+</body>
 </html>
