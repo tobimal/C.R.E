@@ -1,43 +1,37 @@
 <div class="row">
 	<div class="col-xs-3">
 
-		<h2>end_user info</h2>
+		<h2>小説作者</h2>
 		<%= render 'publics/end_users/profile', end_user: @novel.end_user %>
 
 
 	</div>
 
-	<div class="col-xs-9"> 
+	<div class="col-xs-8"> 
 		
           <div class="row">
-          	作者
+          	<% if current_end_user.id== @novel.end_user_id  %>
+          <div class ="cover-text text-right">
+						<%= link_to "編集", edit_publics_novel_path(@novel), class: "btn-sm btn-success edit_novel_#{@novel.id}" %>
+						</div>
+					<% end %>
+					<div class ="cover-text text-center">
+						タイトル :
+						<%= @novel.title %>
+						
+            <div class ="cover-text text-right">
+            作者:
 						<%= link_to publics_end_user_path(@novel.end_user) do %>
 							<%= attachment_image_tag(@novel.end_user, :profile_image_id, :fill, 100, 100, fallback: "no-image-mini.jpg") %>
 							<%= @novel.end_user.name %>
 						<% end %>
 					</div>
-					<br>
-					<div class ="center">タイトル
-          <%= @novel.title %>
-          <% if @novel.favorited_by?(current_end_user) %>
-              <%= link_to publics_novel_favorites_path(@novel), method: :delete do %>
-                <span class="glyphicon glyphicon-heart"><%= @novel.favorites.count%></span>
-              <% end %>
-            <% else %>
-              <%= link_to publics_novel_favorites_path(@novel), method: :post do %>
-                <span class="glyphicon glyphicon-heart-empty"><%= @novel.favorites.count %></span>
-              <% end %>
-            <% end %>
+					</div>
           </div><br>
-          <div>内容<br><%= @novel.body %></div>
+          <div class ="cover-text text-center">
+          	内容<br><%= @novel.body %></div>
 
-          <% if current_end_user.id== @novel.end_user_id  %>
-          <div>
-						<%= link_to "Edit", edit_publics_novel_path(@novel), class: "btn-sm btn-success edit_novel_#{@novel.id}" %>
-						</div>
-					<% end %>
-            
-	</div>
+          </div>
 
 </div>
 
