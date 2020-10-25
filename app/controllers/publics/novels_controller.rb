@@ -1,4 +1,5 @@
 class Publics::NovelsController < ApplicationController
+  before_action :authenticate_end_user!
   def index
   	@novels = Novel.all.includes(:end_user)
     

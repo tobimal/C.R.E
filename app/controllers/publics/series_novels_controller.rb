@@ -1,5 +1,6 @@
 
 class Publics::SeriesNovelsController < ApplicationController
+  before_action :authenticate_end_user!
   def index
   	@series_novels = SeriesNovel.all
   end
