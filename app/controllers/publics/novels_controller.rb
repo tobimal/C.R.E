@@ -8,15 +8,18 @@ class Publics::NovelsController < ApplicationController
   def show
 
   	@novel = Novel.find(params[:id])
+    # ここから閲覧履歴を保存するコードを書く
     new_history = @novel.histories.new
     new_history.end_user_id = current_end_user.id
-    
+
+    # 同一記事の重複チェック・重複時は古い履歴を削除
     if current_end_user.histories.exists?(novel_id: "#{params[:id]}")
       old_history = current_end_user.histories.find_by(novel_id: "#{params[:id]}")
       old_history.destroy
     end
     new_history.save
 
+    # 上限を超えた場合
     histories_stock_limit = 10
     histories = current_end_user.histories.all
     if histories.count > histories_stock_limit
